@@ -1,32 +1,33 @@
 'fileTypes': [
-  'jade'
+  'py.blade'
+  'pyjade'
 ]
-'name': 'Jade'
+'name': 'Blade (Python)'
 'patterns': [
   {
     'comment': 'Doctype declaration.'
     'match': '^(!!!|doctype)(\\s*[a-zA-Z0-9-_]+)?'
-    'name': 'comment.other.doctype.jade'
+    'name': 'comment.other.doctype.blade'
   }
   {
     'begin': '^(\\s*)//-'
     'comment': 'Unbuffered (jade-only) comments.'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'comment.unbuffered.block.jade'
+    'name': 'comment.unbuffered.block.blade'
   }
   {
     'begin': '^(\\s*)//'
     'comment': 'Buffered (html) comments.'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'string.comment.buffered.block.jade'
+    'name': 'string.comment.buffered.block.blade'
     'patterns': [
       {
         'captures':
           '1':
-            'name': 'invalid.illegal.comment.comment.block.jade'
+            'name': 'invalid.illegal.comment.comment.block.blade'
         'comment': 'Buffered comments inside buffered comments will generate invalid html.'
         'match': '^\\s*(//)(?!-)'
-        'name': 'string.comment.buffered.block.jade'
+        'name': 'string.comment.buffered.block.blade'
       }
     ]
   }
@@ -34,15 +35,15 @@
     'begin': '^(\\s*)(script)(?=[.#(\\s])((?![^\\n]*type=)|(?=[^\\n]*text/javascript))'
     'beginCaptures':
       '2':
-        'name': 'entity.name.tag.script.jade'
+        'name': 'entity.name.tag.script.blade'
     'comment': 'Script tag with JavaScript code.'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'source.script.jade'
+    'name': 'source.script.blade'
     'patterns': [
       {
         'begin': '\\G(?=\\()'
         'end': '$'
-        'name': 'stuff.tag.script.jade'
+        'name': 'stuff.tag.script.blade'
         'patterns': [
           {
             'include': '#tag_attributes'
@@ -52,7 +53,7 @@
       {
         'begin': '\\G(?=[.#])'
         'end': '$'
-        'name': 'stuff.tag.script.jade'
+        'name': 'stuff.tag.script.blade'
         'patterns': [
           {
             'include': '#complete_tag'
@@ -68,15 +69,15 @@
     'begin': '^(\\s*)(style)(?=[.#(\\s])'
     'beginCaptures':
       '2':
-        'name': 'entity.name.tag.script.jade'
+        'name': 'entity.name.tag.script.blade'
     'comment': 'Style tag with CSS code.'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'source.style.jade'
+    'name': 'source.style.blade'
     'patterns': [
       {
         'begin': '\\G(?=\\()'
         'end': '$'
-        'name': 'stuff.tag.style.jade'
+        'name': 'stuff.tag.style.blade'
         'patterns': [
           {
             'include': '#tag_attributes'
@@ -86,7 +87,7 @@
       {
         'begin': '\\G(?=[.#])'
         'end': '$'
-        'name': 'stuff.tag.style.jade'
+        'name': 'stuff.tag.style.blade'
         'patterns': [
           {
             'include': '#complete_tag'
@@ -102,9 +103,9 @@
     'begin': '^(\\s*):(markdown)(?=\\(|$)$'
     'beginCaptures':
       '2':
-        'name': 'constant.language.name.markdown.filter.jade'
+        'name': 'constant.language.name.markdown.filter.blade'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'text.markdown.filter.jade'
+    'name': 'text.markdown.filter.blade'
     'patterns': [
       {
         'include': '#filter_args'
@@ -118,9 +119,9 @@
     'begin': '^(\\s*):(sass)(?=\\(|$)$'
     'beginCaptures':
       '2':
-        'name': 'constant.language.name.sass.filter.jade'
+        'name': 'constant.language.name.sass.filter.blade'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'source.sass.filter.jade'
+    'name': 'source.sass.filter.blade'
     'patterns': [
       {
         'include': '#filter_args'
@@ -134,9 +135,9 @@
     'begin': '^(\\s*):(less)(?=\\(|$)$'
     'beginCaptures':
       '2':
-        'name': 'constant.language.name.less.filter.jade'
+        'name': 'constant.language.name.less.filter.blade'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'source.less.filter.jade'
+    'name': 'source.less.filter.blade'
     'patterns': [
       {
         'include': '#filter_args'
@@ -150,9 +151,9 @@
     'begin': '^(\\s*):(stylus)(?=\\(|$)$'
     'beginCaptures':
       '2':
-        'name': 'constant.language.name.stylus.filter.jade'
+        'name': 'constant.language.name.stylus.filter.blade'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'source.stylus.filter.jade'
+    'name': 'source.stylus.filter.blade'
     'patterns': [
       {
         'include': '#filter_args'
@@ -166,9 +167,9 @@
     'begin': '^(\\s*):(coffee(-?script)?)(?=\\(|$)'
     'beginCaptures':
       '2':
-        'name': 'constant.language.name.coffeescript.filter.jade'
+        'name': 'constant.language.name.coffeescript.filter.blade'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'source.coffeescript.filter.jade'
+    'name': 'source.coffeescript.filter.blade'
     'patterns': [
       {
         'include': '#filter_args'
@@ -182,30 +183,30 @@
     'begin': '^(\\s*)((:(?=.))|(:$))'
     'beginCaptures':
       '4':
-        'name': 'invalid.illegal.empty.generic.filter.jade'
+        'name': 'invalid.illegal.empty.generic.filter.blade'
     'comment': 'Generic Jade filter.'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'text.generic.filter.jade'
+    'name': 'text.generic.filter.blade'
     'patterns': [
       {
         'begin': '\\G(?<=:)(?=.)'
         'end': '$'
-        'name': 'name.generic.filter.jade'
+        'name': 'name.generic.filter.blade'
         'patterns': [
           {
             'match': '\\G\\('
-            'name': 'invalid.illegal.name.generic.filter.jade'
+            'name': 'invalid.illegal.name.generic.filter.blade'
           }
           {
             'match': '\\w'
-            'name': 'constant.language.name.generic.filter.jade'
+            'name': 'constant.language.name.generic.filter.blade'
           }
           {
             'include': '#filter_args'
           }
           {
             'match': '\\W'
-            'name': 'invalid.illegal.name.generic.filter.jade'
+            'name': 'invalid.illegal.name.generic.filter.blade'
           }
         ]
       }
@@ -215,14 +216,14 @@
     'begin': '^(\\s*)(?=[\\w.#].*?\\.$)(?=(?:(?:(?:(?:(?:#[\\w-]+)|(?:\\.[\\w-]+))|(?:(?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))(?:(?:#[\\w-]+)|(?:\\.[\\w-]+)|(?:\\((?:[^()\\\'\\"]*(?:(?:\\\'(?:[^\\\']|(?:(?<!\\\\)\\\\\\\'))*\\\')|(?:\\"(?:[^\\"]|(?:(?<!\\\\)\\\\\\"))*\\")))*[^()]*\\))*)*)(?:(?:(?::\\s+)|(?<=\\)))(?:(?:(?:(?:#[\\w-]+)|(?:\\.[\\w-]+))|(?:(?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))(?:(?:#[\\w-]+)|(?:\\.[\\w-]+)|(?:\\((?:[^()\\\'\\"]*(?:(?:\\\'(?:[^\\\']|(?:(?<!\\\\)\\\\\\\'))*\\\')|(?:\\"(?:[^\\"]|(?:(?<!\\\\)\\\\\\"))*\\")))*[^()]*\\))*)*))*)\\.$)(?:(?:(#[\\w-]+)|(\\.[\\w-]+))|((?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))'
     'beginCaptures':
       '2':
-        'name': 'constant.id.tag.jade'
+        'name': 'constant.id.tag.blade'
       '3':
         'name': 'constant.language.js'
       '4':
-        'name': 'entity.name.tag.jade'
+        'name': 'entity.name.tag.blade'
     'comment': 'Generated from dot_block_tag.py'
     'end': '^(?!(\\1\\s)|\\s*$)'
-    'name': 'text.block.dot.tag.jade'
+    'name': 'text.block.dot.tag.blade'
     'patterns': [
       {
         'include': '#tag_attributes'
@@ -233,7 +234,7 @@
       {
         'begin': '^(?=.)'
         'end': '$'
-        'name': 'text.block.jade'
+        'name': 'text.block.blade'
         'patterns': [
           {
             'include': '#inline_jade'
@@ -255,10 +256,10 @@
     ]
   }
   {
-    'begin': '^\\s*+(?=[^/])'
+    'begin': '^\\s*'
     'comment': 'All constructs that generally span a single line starting with any number of white-spaces.'
     'end': '$'
-    'name': 'tag.jade'
+    'name': 'tag.blade'
     'patterns': [
       {
         'include': '#inline_jade'
@@ -282,7 +283,7 @@
         'begin': '\\|'
         'comment': 'Tag pipe text line.'
         'end': '$'
-        'name': 'text.block.pipe.jade'
+        'name': 'text.block.pipe.blade'
         'patterns': [
           {
             'include': '#inline_jade'
@@ -308,7 +309,7 @@
         'begin': '\\G((?=<)|[^\\w.#]|(\\.[^\\w-]))|(#[^\\{\\w-])'
         'comment': 'Line starting with characters incompatible with tag name/id/class is standalone text.'
         'end': '$'
-        'name': 'text.jade'
+        'name': 'text.blade'
         'patterns': [
           {
             'include': '#inline_jade'
@@ -337,50 +338,50 @@
   'blocks_and_includes':
     'captures':
       '1':
-        'name': 'storage.type.import.include.jade'
+        'name': 'storage.type.import.include.blade'
       '4':
-        'name': 'variable.control.import.include.jade'
+        'name': 'variable.control.import.include.blade'
     'comment': 'Template blocks and includes.'
     'match': '(extends|include|yield|append|prepend|block( (append|prepend))?)\\s+(.*)$'
-    'name': 'meta.first-class.jade'
+    'name': 'meta.first-class.blade'
   'brackets_js':
     'begin': '\\['
     'end': '\\]'
-    'name': 'js.value.attribute.tag.jade'
+    'name': 'js.value.attribute.tag.blade'
     'patterns': [
       {
         'include': '#brackets_js'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'case_conds':
     'begin': '(default|when)((\\s+|(?=:))|$)'
     'captures':
       '1':
-        'name': 'storage.type.function.jade'
+        'name': 'storage.type.function.blade'
     'comment': 'Jade case conditionals.'
     'end': '$'
-    'name': 'meta.control.flow.jade'
+    'name': 'meta.control.flow.blade'
     'patterns': [
       {
         'begin': '\\G(?!:)'
         'end': '(?=:\\s+)|$'
-        'name': 'js.embedded.control.flow.jade'
+        'name': 'js.embedded.control.flow.blade'
         'patterns': [
           {
             'include': '#case_when_paren'
           }
           {
-            'include': 'source.js'
+            'include': 'source.python'
           }
         ]
       }
       {
         'begin': ':\\s+'
         'end': '$'
-        'name': 'tag.case.control.flow.jade'
+        'name': 'tag.case.control.flow.blade'
         'patterns': [
           {
             'include': '#complete_tag'
@@ -391,23 +392,23 @@
   'case_when_paren':
     'begin': '\\('
     'end': '\\)'
-    'name': 'js.when.control.flow.jade'
+    'name': 'js.when.control.flow.blade'
     'patterns': [
       {
         'include': '#case_when_paren'
       }
       {
         'match': ':'
-        'name': 'invalid.illegal.name.tag.jade'
+        'name': 'invalid.illegal.name.tag.blade'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'complete_tag':
     'begin': '(?=[\\w.#])|(:\\s*)'
     'end': '(\\.?$)|(?=:.)'
-    'name': 'complete_tag.jade'
+    'name': 'complete_tag.blade'
     'patterns': [
       {
         'include': '#blocks_and_includes'
@@ -423,7 +424,7 @@
       }
       {
         'match': '(?<=:)\\w.*$'
-        'name': 'invalid.illegal.name.tag.jade'
+        'name': 'invalid.illegal.name.tag.blade'
       }
       {
         'include': '#tag_name'
@@ -443,9 +444,9 @@
       {
         'captures':
           '2':
-            'name': 'invalid.illegal.end.tag.jade'
+            'name': 'invalid.illegal.end.tag.blade'
           '4':
-            'name': 'invalid.illegal.end.tag.jade'
+            'name': 'invalid.illegal.end.tag.blade'
         'match': '((\\.)\\s+$)|((:)\\s*$)'
       }
       {
@@ -474,22 +475,22 @@
     'begin': '\\G(\\()'
     'captures':
       '1':
-        'name': 'meta.args.filter.jade'
+        'name': 'meta.args.filter.blade'
       '2':
-        'name': 'invalid.illegal.extra.args.filter.jade'
+        'name': 'invalid.illegal.extra.args.filter.blade'
     'end': '(\\))(.*?$)'
-    'name': 'args.filter.jade'
+    'name': 'args.filter.blade'
     'patterns': [
       {
         'begin': '([^\\s(),=]+)(=?)'
         'beginCaptures':
           '1':
-            'name': 'entity.other.attribute-name.tag.jade'
+            'name': 'entity.other.attribute-name.tag.blade'
           '2':
-            'name': 'punctuation.separator.key-value.jade'
-        'contentName': 'string.value.args.filter.jade'
+            'name': 'punctuation.separator.key-value.blade'
+        'contentName': 'string.value.args.filter.blade'
         'end': '((?=\\))|,|$)'
-        'name': 'attributes.tag.jade'
+        'name': 'attributes.tag.blade'
         'patterns': [
           {
             'include': '#filter_args_paren'
@@ -506,59 +507,45 @@
       }
     ]
   'flow_control':
+    'begin': '(for|if|else if|else|each|until|while|unless|case)(\\s+|$)'
+    'captures':
+      '1':
+        'name': 'storage.type.function.blade'
+    'comment': 'Jade control flow.'
+    'end': '$'
+    'name': 'meta.control.flow.blade'
     'patterns': [
       {
-        'begin': '(for|if|else if|each|until|while|unless|case)(\\s+|$)'
-        'captures':
-          '1':
-            'name': 'storage.type.function.jade'
-        'comment': 'Jade control flow.'
+        'begin': ''
         'end': '$'
-        'name': 'meta.control.flow.jade'
+        'name': 'js.embedded.control.flow.blade'
         'patterns': [
           {
-            'begin': ''
-            'end': '$'
-            'name': 'js.embedded.control.flow.jade'
-            'patterns': [
-              {
-                'include': 'source.js'
-              }
-            ]
+            'include': 'source.python'
           }
         ]
-      }
-      {
-        'match': '(else)(?! if)\\s*([^\\s].*)?$'
-        'captures':
-          '1':
-            'name': 'storage.type.function.jade'
-          '2':
-            'name': 'invalid.illegal.html_entity.text.jade'
-        'comment': 'Jade control flow.'
-        'name': 'meta.control.flow.jade'
       }
     ]
   'html_entity':
     'patterns': [
       {
         'match': '(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)'
-        'name': 'constant.character.entity.html.text.jade'
+        'name': 'constant.character.entity.html.text.blade'
       }
       {
         'match': '[<>&]'
-        'name': 'invalid.illegal.html_entity.text.jade'
+        'name': 'invalid.illegal.html_entity.text.blade'
       }
     ]
   'inline_jade':
     'begin': '(?<!\\\\)(#\\[)'
     'captures':
       '1':
-        'name': 'entity.name.function.jade'
+        'name': 'entity.name.function.blade'
       '2':
-        'name': 'entity.name.function.jade'
+        'name': 'entity.name.function.blade'
     'end': '(\\])'
-    'name': 'inline.jade'
+    'name': 'inline.blade'
     'patterns': [
       {
         'include': '#inline_jade'
@@ -569,7 +556,7 @@
       {
         'begin': '(?<!\\])(?=[\\w.#])|(:\\s*)'
         'end': '(?=\\]|(:.)|=|\\s)'
-        'name': 'tag.inline.jade'
+        'name': 'tag.inline.blade'
         'patterns': [
           {
             'include': '#tag_name'
@@ -591,7 +578,7 @@
           }
           {
             'match': '\\['
-            'name': 'invalid.illegal.tag.jade'
+            'name': 'invalid.illegal.tag.blade'
           }
         ]
       }
@@ -603,7 +590,7 @@
       }
       {
         'match': '\\['
-        'name': 'invalid.illegal.tag.jade'
+        'name': 'invalid.illegal.tag.blade'
       }
       {
         'include': '#inline_jade_text'
@@ -612,7 +599,7 @@
   'inline_jade_text':
     'begin': ''
     'end': '(?=\\])'
-    'name': 'text.jade'
+    'name': 'text.blade'
     'patterns': [
       {
         'begin': '\\['
@@ -641,35 +628,35 @@
     ]
   'interpolated_error':
     'match': '(?<!\\\\)[#!]\\{(?=[^}]*$)'
-    'name': 'invalid.illegal.tag.jade'
+    'name': 'invalid.illegal.tag.blade'
   'interpolated_value':
     'begin': '(?<!\\\\)[#!]\\{(?=.*?\\})'
     'end': '\\}'
-    'name': 'string.interpolated.jade'
+    'name': 'string.interpolated.blade'
     'patterns': [
       {
         'match': '{'
-        'name': 'invalid.illegal.tag.jade'
+        'name': 'invalid.illegal.tag.blade'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'mixins':
     'begin': '(((mixin\\s+)|\\+)([\\w-]+))\\s*'
     'beginCaptures':
       '2':
-        'name': 'storage.type.function.jade'
+        'name': 'storage.type.function.blade'
       '4':
-        'name': 'entity.name.function.jade'
+        'name': 'entity.name.function.blade'
     'comment': 'Mixin declaration and use, including the new \'+\' syntax.'
-    'end': '(?=\\])|(?=\\))|$'
-    'name': 'meta.mixin.jade'
+    'end': '(?=\\])|$'
+    'name': 'meta.mixin.blade'
     'patterns': [
       {
-        'begin': '(\\(|\\[)'
-        'end': '(?=\\])|(?=\\))|$'
-        'name': 'args.mixin.jade'
+        'begin': ''
+        'end': '(?=\\])|$'
+        'name': 'args.mixin.blade'
         'patterns': [
           {
             'include': '#tag_attribute_value_paren'
@@ -681,7 +668,7 @@
             'include': '#tag_attribute_value_braces'
           }
           {
-            'include': 'source.js'
+            'include': 'source.python'
           }
         ]
       }
@@ -697,17 +684,17 @@
         'include': '#brackets_js'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'string':
     'begin': '([\'"])'
     'end': '(?<!\\\\)\\1'
-    'name': 'string.quoted.jade'
+    'name': 'string.quoted.blade'
     'patterns': [
       {
         'match': '\\\\((x[0-9a-fA-F]{2})|(u[0-9]{4})|.)'
-        'name': 'constant.character.quoted.jade'
+        'name': 'constant.character.quoted.blade'
       }
       {
         'include': '#interpolated_value'
@@ -719,7 +706,7 @@
   'tag_attribute_value_braces':
     'begin': '\\{'
     'end': '\\}'
-    'name': 'js.value.attribute.tag.jade'
+    'name': 'js.value.attribute.tag.blade'
     'patterns': [
       {
         'include': '#tag_attribute_value_paren'
@@ -734,13 +721,13 @@
         'include': '#string'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'tag_attribute_value_brackets':
     'begin': '\\['
     'end': '\\]'
-    'name': 'js.value.attribute.tag.jade'
+    'name': 'js.value.attribute.tag.blade'
     'patterns': [
       {
         'include': '#tag_attribute_value_paren'
@@ -755,13 +742,13 @@
         'include': '#string'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'tag_attribute_value_paren':
     'begin': '\\('
     'end': '\\)'
-    'name': 'js.value.attribute.tag.jade'
+    'name': 'js.value.attribute.tag.blade'
     'patterns': [
       {
         'include': '#tag_attribute_value_paren'
@@ -776,33 +763,33 @@
         'include': '#string'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'tag_attributes':
     'begin': '(\\()'
     'captures':
       '1':
-        'name': 'constant.name.attribute.tag.jade'
+        'name': 'constant.name.attribute.tag.blade'
     'end': '(\\))'
-    'name': 'attributes.tag.jade'
+    'name': 'attributes.tag.blade'
     'patterns': [
       {
         'captures':
           '1':
-            'name': 'entity.other.attribute-name.tag.jade'
-        'match': '([^\\s(),=/]+|\\[[^\\s,=/]+]|\\([^\\s(),=/]+\\))\\s*((?=\\))|,|\\s+|$)(?!=)'
-        'name': 'attributes.tag.jade'
+            'name': 'entity.other.attribute-name.tag.blade'
+        'match': '([^\\s(),=/]+)\\s*((?=\\))|,|\\s+|$)(?!=)'
+        'name': 'attributes.tag.blade'
       }
       {
-        'begin': '([^\\s,=/]*[^\\s,=!/])\\s*(!?\\=)'
+        'begin': '([^\\s(),=/]*[^\\s(),=!/])\\s*(!?\\=)'
         'beginCaptures':
           '1':
-            'name': 'entity.other.attribute-name.tag.jade'
+            'name': 'entity.other.attribute-name.tag.blade'
           '2':
-            'name': 'punctuation.separator.key-value.jade'
+            'name': 'punctuation.separator.key-value.blade'
         'end': '(,|$|(?=\\)|((?<![+/*|&=:^~!?<>%-])\\s+[^+/*|&=:^~!?<>%-])))'
-        'name': 'attributes.tag.jade'
+        'name': 'attributes.tag.blade'
         'patterns': [
           {
             'include': '#tag_attribute_value_paren'
@@ -817,55 +804,49 @@
             'include': '#string'
           }
           {
-            'include': 'source.js'
+            'include': 'source.python'
           }
         ]
       }
     ]
   'tag_classes':
-    'captures':
-      '1':
-        'name': 'entity.other.attribute-name.class.css.jade'
-    'match': '(\\.[a-zA-Z0-9_-]+)'
-    'name': 'meta.selector.css.jade'
+    'match': '\\.[\\w-]+'
+    'name': 'constant.language.js'
   'tag_id':
-    'captures':
-      '1':
-        'name': 'entity.other.attribute-name.id.css.jade'
-    'match': '(#[\\w-]+)'
-    'name': 'meta.selector.css.jade'
+    'match': '#[\\w-]+'
+    'name': 'entity.other.attribute-name.id.blade'
   'tag_mixin_attributes':
     'begin': '(&attributes\\()'
     'captures':
       '1':
-        'name': 'entity.name.function.jade'
+        'name': 'entity.name.function.blade'
     'end': '(\\))'
-    'name': 'attributes.tag.jade'
+    'name': 'attributes.tag.blade'
     'patterns': [
       {
         'match': 'attributes(?=\\))'
-        'name': 'storage.type.keyword.jade'
+        'name': 'storage.type.keyword.blade'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
   'tag_name':
     'begin': '([#!]\\{(?=.*?\\}))|(\\w(([\\w:-]+[\\w-])|([\\w-]*)))'
     'end': '(\\G(?<!\\5[^\\w-]))|\\}|$'
-    'name': 'entity.name.tag.jade'
+    'name': 'entity.name.tag.blade'
     'patterns': [
       {
         'begin': '\\G(?<=\\{)'
         'end': '(?=\\})'
-        'name': 'entity.name.tag.jade'
+        'name': 'entity.name.tag.blade'
         'patterns': [
           {
             'match': '{'
-            'name': 'invalid.illegal.tag.jade'
+            'name': 'invalid.illegal.tag.blade'
           }
           {
-            'include': 'source.js'
+            'include': 'source.python'
           }
         ]
       }
@@ -873,7 +854,7 @@
   'tag_text':
     'begin': '(?=.)'
     'end': '$'
-    'name': 'text.jade'
+    'name': 'text.blade'
     'patterns': [
       {
         'include': '#inline_jade'
@@ -895,16 +876,16 @@
     'begin': '(-|(([a-zA-Z0-9_]+)\\s+=))'
     'beginCaptures':
       '3':
-        'name': 'variable.parameter.javascript.embedded.jade'
+        'name': 'variable.parameter.javascript.embedded.blade'
     'comment': 'name = function() {}'
     'end': '(?=\\])|$'
-    'name': 'javascript.embedded.jade'
+    'name': 'javascript.embedded.blade'
     'patterns': [
       {
         'include': '#brackets_js'
       }
       {
-        'include': 'source.js'
+        'include': 'source.python'
       }
     ]
-'scopeName': 'source.jade'
+'scopeName': 'source.pyjade'
